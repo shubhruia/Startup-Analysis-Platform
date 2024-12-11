@@ -2,5 +2,5 @@ streamlit
 pandas
 plotly
 numpy
-phi
+phi>=1.0.0
 duckduckgo-search
