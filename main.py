@@ -1,5 +1,3 @@
-import sys
-import phi
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -8,9 +6,6 @@ import numpy as np
 from phi.agent import Agent
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.model.groq import Groq as GroqModel
-
-st.write(f"Python version: {sys.version}")
-st.write(f"Phi version: {phi.__version__}")
 
 class ComprehensiveStartupTrendAnalyzer:
     STARTUP_DOMAINS = [
