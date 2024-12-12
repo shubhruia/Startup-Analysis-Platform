@@ -4,3 +4,4 @@ plotly
 numpy
 phi
 duckduckgo-search
+phidata
