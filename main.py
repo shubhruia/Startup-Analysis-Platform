@@ -138,7 +138,7 @@ selected_domains = st.sidebar.multiselect(
 analysis_depth = st.sidebar.slider("Analysis Depth", 1, 10, 7)
 focus_areas = st.sidebar.multiselect(
     "Focus Areas",
-    ['Technological Innovation', 'Market Potential', 'Investment Landscape', 'Emerging Trends']
+    ['Technological Innovation', 'Market Potential', 'Investment Landscape', 'Emerging Trends'],
     default=['Market Potential']
 )
 
