@@ -15,15 +15,18 @@ Startup Analysis is an advanced, AI-powered platform designed to provide compreh
 ## 📸 Screenshots and Visualizations
 
 ### Platform Overview
-![Platform Main Interface](/images/platform-overview.png)
+![Platform Main Interface](https://github.com/shubhruia/Startup-Analysis-Platform/blob/main/images/platform%20overview.png)
+
 *Comprehensive dashboard showing startup trend analysis*
 
 ### Trend Radar Visualization
-![Trend Radar Chart](/images/trend-radar.png)
+![Trend Radar Chart](https://github.com/shubhruia/Startup-Analysis-Platform/blob/main/images/radar%20chart.png)
+
 *Multi-dimensional view of startup domain trends*
 
 ### Comparative Trend Analysis
-![Bar Chart Comparison](/images/bar-chart-trends.png)
+![Bar Chart Comparison](https://github.com/shubhruia/Startup-Analysis-Platform/blob/main/images/bar%20chart.png)
+
 *Detailed comparative analysis across technological domains*
 
 ### Visualization Types
