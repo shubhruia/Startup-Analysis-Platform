@@ -15,6 +15,7 @@ Startup Analysis is an advanced, AI-powered platform designed to provide compreh
 ## Demo
 
 **Try the live demo of this application [here](https://startup-trend-analysis-platform.streamlit.app/).**
+**API Key**: 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
 
 ## 📸 Screenshots and Visualizations
 
