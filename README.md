@@ -14,7 +14,7 @@ Startup Analysis is an advanced, AI-powered platform designed to provide compreh
 
 ## Demo
 
-**Try the live demo of this application here: https://startup-trend-analysis-platform.streamlit.app/.**
+**Try the live demo of this application here: startup-trend-analysis-platform.streamlit.app**
 
 ## 📸 Screenshots and Visualizations
 
