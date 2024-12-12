@@ -12,24 +12,6 @@ Startup Analysis is an advanced, AI-powered platform designed to provide compreh
 - **Real-Time News Aggregation**: Collects latest breakthroughs and innovations
 - **Interactive Visualizations**: Radar and bar charts for comparative trend analysis
 
-### Supported Domains
-- AI/Machine Learning
-- Biotechnology
-- CleanTech
-- FinTech
-- EdTech
-- SpaceTech
-- Cybersecurity
-- Robotics
-- Healthcare Tech
-- AgriTech
-- Quantum Computing
-- Blockchain/Web3
-- Renewable Energy
-- Climate Tech
-- Advanced Materials
-- Autonomous Vehicles
-
 ## 🛠 Technology Stack
 
 - **Language**: Python
