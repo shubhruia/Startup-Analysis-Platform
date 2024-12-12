@@ -131,7 +131,7 @@ groq_api_key = st.sidebar.text_input("Groq API Key", type="password")
 selected_domains = st.sidebar.multiselect(
     "Select Startup Domains for Analysis", 
     ComprehensiveStartupTrendAnalyzer.STARTUP_DOMAINS,
-    default=['AI/Machine Learning', 'Biotechnology', 'FinTech']
+    default=['AI/Machine Learning']
 )
 
 # Analysis depth and focus
@@ -139,6 +139,7 @@ analysis_depth = st.sidebar.slider("Analysis Depth", 1, 10, 7)
 focus_areas = st.sidebar.multiselect(
     "Focus Areas",
     ['Technological Innovation', 'Market Potential', 'Investment Landscape', 'Emerging Trends']
+    default=['Market Potential']
 )
 
 if st.sidebar.button("Generate Comprehensive Analysis"):
