@@ -4,5 +4,3 @@ plotly
 numpy
 phi
 duckduckgo-search
-langchain_groq
-langchain_community
