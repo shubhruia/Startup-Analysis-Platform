@@ -1,8 +1,8 @@
-# 🚀 Startup Trend Intelligence Platform
+# 🚀 Startup Analysis Platform
 
 ## Overview
 
-Startup Trend Intelligence is an advanced, AI-powered platform designed to provide comprehensive insights into emerging technological domains, helping entrepreneurs, investors, and innovation strategists identify promising startup opportunities.
+Startup Analysis is an advanced, AI-powered platform designed to provide comprehensive insights into emerging technological domains, helping entrepreneurs, investors, and innovation strategists identify promising startup opportunities.
 
 ## 🌟 Key Features
 
@@ -117,7 +117,7 @@ streamlit run main.py
 ### 4. Downloadable Reports
 - Export detailed trend analysis for each domain
 
-## 🤝 Contributing
+## 🤝 Contributtion
 
 ### Ways to Contribute
 1. Report Bugs
@@ -141,7 +141,7 @@ streamlit run main.py
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
 
 ## 🙏 Acknowledgements
 
@@ -151,10 +151,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 🔗 Contact
 
-**Project Maintainer**: [Your Name]
-- Email: youremail@example.com
-- LinkedIn: [Your LinkedIn Profile]
-- Twitter: [@YourHandle]
+**Project Maintainers**
+- **Britti Vora** - [Github](https://github.com/brittivora), [LinkedIn](https://www.linkedin.com/in/britti-vora/)
+- **Harsh Thavai** - [Github](https://github.com/harsh-thavai), [LinkedIn](https://www.linkedin.com/in/harsh-thavai/)
+- **Lalit Yangaldas** - [Github](https://github.com/LalitYangaldas), [LinkedIn](https://www.linkedin.com/in/lalit-yangaldas/)
+- **Shubh Ruia** - [Github](https://github.com/shubhruia), [LinkedIn](https://www.linkedin.com/in/shubh-ruia/)
 
 ---
 
