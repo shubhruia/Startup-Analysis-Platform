@@ -12,6 +12,25 @@ Startup Analysis is an advanced, AI-powered platform designed to provide compreh
 - **Real-Time News Aggregation**: Collects latest breakthroughs and innovations
 - **Interactive Visualizations**: Radar and bar charts for comparative trend analysis
 
+## 📸 Screenshots and Visualizations
+
+### Platform Overview
+![Platform Main Interface](/images/platform-overview.png)
+*Comprehensive dashboard showing startup trend analysis*
+
+### Trend Radar Visualization
+![Trend Radar Chart](/images/trend-radar.png)
+*Multi-dimensional view of startup domain trends*
+
+### Comparative Trend Analysis
+![Bar Chart Comparison](/images/bar-chart-trends.png)
+*Detailed comparative analysis across technological domains*
+
+### Visualization Types
+- **Radar Chart**: Shows multidimensional performance metrics
+- **Bar Chart**: Enables side-by-side domain comparisons
+- **Trend Indicators**: Visual representation of innovation potential
+
 ## 🛠 Technology Stack
 
 - **Language**: Python
