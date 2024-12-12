@@ -1,3 +1,5 @@
+import inspect
+import warnings
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -6,6 +8,8 @@ import numpy as np
 from phi.agent import Agent
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.model.groq import Groq as GroqModel
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 class ComprehensiveStartupTrendAnalyzer:
     STARTUP_DOMAINS = [
