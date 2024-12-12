@@ -1,15 +1,14 @@
-import inspect
-import warnings
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 import numpy as np
-from phi.agent import Agent
-from phi.tools.duckduckgo import DuckDuckGo
-from phi.model.groq import Groq as GroqModel
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
+# LangChain Imports
+from langchain_groq import ChatGroq
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_community.tools import DuckDuckGoSearchResults
 
 class ComprehensiveStartupTrendAnalyzer:
     STARTUP_DOMAINS = [
@@ -22,65 +21,64 @@ class ComprehensiveStartupTrendAnalyzer:
     ]
 
     def __init__(self, groq_api_key):
-        self.groq_model = GroqModel(
-            id="llama-3.3-70b-versatile", 
-            api_key=groq_api_key,
-            max_tokens=4000  # Increased token limit
+        # Initialize LangChain Groq Chat Model
+        self.llm = ChatGroq(
+            temperature=0.2, 
+            model_name="llama-3-70b-8192",
+            groq_api_key=groq_api_key
         )
-        self.setup_agents()
-
-    def setup_agents(self):
-        # Comprehensive News Collector
-        self.news_collector = Agent(
-            name="Global Trend Scout",
-            role="Gather comprehensive insights across multiple sources",
-            tools=[DuckDuckGo(search=True, news=True, fixed_max_results=7)],
-            model=self.groq_model,
-            instructions=[
-                "Collect diverse and recent news articles",
-                "Focus on emerging trends and breakthrough innovations",
-                "Provide global and regional perspectives",
-                "Highlight potential disruptive technologies"
-            ]
-        )
-
-        # Advanced Trend Analyzer
-        self.trend_analyzer = Agent(
-            name="Strategic Trend Interpreter",
-            role="Deep-dive analysis of technological and market trends",
-            model=self.groq_model,
-            instructions=[
-                "Analyze technological potential",
-                "Assess market readiness and investment landscape",
-                "Identify potential startup opportunities",
-                "Provide actionable insights for entrepreneurs"
-            ]
-        )
+        
+        # Initialize Search Tool
+        self.search_tool = DuckDuckGoSearchResults()
 
     def generate_comprehensive_analysis(self, domains):
         analysis_results = {}
         
         for domain in domains:
-            # Collect News and Insights
-            news_response = self.news_collector.run(
-                f"Gather latest breakthrough news and trends in {domain} "
-                "focusing on startup opportunities, technological innovations, "
-                "and market potential"
-            )
-
-            # Analyze Trends
-            trend_response = self.trend_analyzer.run(
-                f"Provide a comprehensive analysis of startup trends in {domain}. "
-                "Break down technological innovations, market potential, "
-                "investment landscape, and potential disruptive technologies. "
-                f"Context: {news_response.content}"
-            )
-
-            analysis_results[domain] = {
-                'news': news_response.content,
-                'trends': trend_response.content
-            }
-
+            # Search for recent news and trends
+            search_results = self.search_tool.run(f"Latest startup trends in {domain} 2024")
+            
+            # Create a prompt for trend analysis
+            prompt = ChatPromptTemplate.from_messages([
+                ("system", """You are an expert startup trend analyst. 
+                Provide a comprehensive analysis of startup trends based on the following context.
+                Focus on:
+                - Technological innovations
+                - Market potential
+                - Investment landscape
+                - Emerging opportunities
+                
+                Respond in a structured JSON format with key insights."""),
+                ("human", """Analyze the following context about {domain} startup trends:
+                Recent Search Results: {search_results}
+                
+                Provide a detailed analysis in the following JSON structure:
+                {{
+                    "domain": "{domain}",
+                    "key_technologies": [],
+                    "market_potential": "",
+                    "investment_trends": "",
+                    "emerging_opportunities": [],
+                    "challenges": []
+                }}""")
+            ])
+            
+            # Create a chain with output parsing
+            chain = prompt | self.llm | JsonOutputParser()
+            
+            try:
+                # Generate analysis
+                trend_response = chain.invoke({
+                    "domain": domain, 
+                    "search_results": search_results
+                })
+                
+                analysis_results[domain] = trend_response
+            except Exception as e:
+                analysis_results[domain] = {
+                    "error": f"Analysis failed for {domain}: {str(e)}"
+                }
+        
         return analysis_results
 
     def generate_trend_metrics(self, domains):
@@ -177,16 +175,21 @@ if st.sidebar.button("Generate Comprehensive Analysis"):
             with insights_tab:
                 for domain in selected_domains:
                     with st.expander(f"{domain} - Trend Analysis"):
-                        st.write("🌐 Market Trends:")
-                        st.write(analysis_results[domain]['trends'])
-                        
-                        # Optional: Downloadable detailed report
-                        st.download_button(
-                            label=f"Download {domain} Report",
-                            data=analysis_results[domain]['trends'],
-                            file_name=f"{domain.replace(' ', '_')}_startup_trends.txt",
-                            mime="text/plain"
-                        )
+                        # Check if analysis was successful
+                        if 'error' in analysis_results[domain]:
+                            st.error(analysis_results[domain]['error'])
+                        else:
+                            # Display parsed insights
+                            st.write("🌐 Market Trends:")
+                            st.json(analysis_results[domain])
+                            
+                            # Optional: Downloadable detailed report
+                            st.download_button(
+                                label=f"Download {domain} Report",
+                                data=str(analysis_results[domain]),
+                                file_name=f"{domain.replace(' ', '_')}_startup_trends.json",
+                                mime="application/json"
+                            )
 
         except Exception as e:
             st.error(f"Analysis failed: {e}")
@@ -196,7 +199,7 @@ if st.sidebar.button("Generate Comprehensive Analysis"):
 # Footer with information
 st.sidebar.markdown("---")
 st.sidebar.info(
-    "💡 This platform provides data-driven insights "
+    "💡 This platform provides AI-powered insights "
     "to help entrepreneurs identify promising startup opportunities "
     "across various technological domains."
 )
