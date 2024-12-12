@@ -162,5 +162,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 - **Shubh Ruia** - [Github](https://github.com/shubhruia), [LinkedIn](https://www.linkedin.com/in/shubh-ruia/)
 
 ---
-
-### Disclaimer: The insights provided are AI-generated and should be used as a strategic input, not the sole basis for investment decisions.
